@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1003</width>
+    <width>1098</width>
     <height>860</height>
    </rect>
   </property>
@@ -15,10 +15,47 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0" colspan="2">
+    <item row="1" column="0">
+     <widget class="QPlainTextEdit" name="text1">
+      <property name="plainText">
+       <string>Indsæt din tekst her
+</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QPushButton" name="skift_oversaetning">
+      <property name="text">
+       <string>&lt;===&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPlainTextEdit" name="text2">
+      <property name="plainText">
+       <string>Din oversatte tekst bliver skrevet her
+</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Dansk</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Røversprog</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" colspan="3">
      <widget class="QPushButton" name="oversaet_knap">
       <property name="text">
-       <string>PushButton</string>
+       <string>Oversæt</string>
       </property>
      </widget>
     </item>
@@ -29,7 +66,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1003</width>
+     <width>1098</width>
      <height>23</height>
     </rect>
    </property>

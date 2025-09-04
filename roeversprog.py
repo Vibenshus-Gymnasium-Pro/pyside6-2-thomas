@@ -41,5 +41,5 @@ def oversaet_fra_roeversprog_til_andet_sprog(inputtekst):
     return outputtekst
 # Udvikling af logik:1 ends here 
 
-print(oversaet_til_roeversprog("tAEst"))
-print(oversaet_fra_roeversprog_til_andet_sprog("totAEsostot"))
+#print(oversaet_til_roeversprog("tAEst"))
+#print(oversaet_fra_roeversprog_til_andet_sprog("totAEsostot"))

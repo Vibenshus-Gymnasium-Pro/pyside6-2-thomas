@@ -17,10 +17,14 @@ from PySide6.QtCore import QObject
 loader = QUiLoader()
 
 
+
+
+
 # Læg mærke til at klassen nedarver fra QObject i stedet for QMainWindow
 class Roeversprogsoversaetter(QObject):
     def __init__(self):
         super().__init__()
+        self.translate_roeversprog = True
         # Her loades brugerfladen fra Designer.
         self.ui = loader.load("roeversprogsoversaetter.ui", None)
         # self.ui refererer til selve brugerfladen som for nu er af typen
@@ -28,15 +32,36 @@ class Roeversprogsoversaetter(QObject):
         self.ui.setWindowTitle("Direkte indlæsning fra ui")
         # Her sættes signal og slot op for oversaetknap og metoden oversaet
         self.ui.oversaet_knap.clicked.connect(self.oversaet)
+        self.ui.skift_oversaetning.clicked.connect(self.translate_bool)
         # self.ui.show()
+
+    def translate_bool(self):
+        """ Reverse the translation. """
+        self.translate_roeversprog = not self.translate_roeversprog
+        self.ui.text1.setPlainText("")
+        self.ui.text2.setPlainText("")
+        if self.translate_roeversprog == False:
+            self.ui.label.setText("Røversprog")
+            self.ui.label_2.setText("Regular language")
+        else:
+            self.ui.label_2.setText("Røversprog")
+            self.ui.label.setText("Regular language")
+
 
     def oversaet(self):
         # Denne metode anvender funktionen oversaet_til_roeversprog, som
         # ligger i modulet roeversprog (som er importeret i starten)
-        output_fra_oversaetteren = roeversprog.oversaet_til_roeversprog(
-            "input som ikke bruges"
-        )
-        print(output_fra_oversaetteren)
+        if self.translate_roeversprog == True:
+            output_fra_oversaetteren = roeversprog.oversaet_til_roeversprog(
+                self.ui.text1.toPlainText()
+            )
+        elif self.translate_roeversprog == False:
+            output_fra_oversaetteren = roeversprog.oversaet_fra_roeversprog_til_andet_sprog(
+                self.ui.text1.toPlainText()
+            )
+            
+        self.ui.text2.setPlainText(output_fra_oversaetteren)
+
         # I skal selv sørge for at forbedre den metode, så den gør
         # som I ønsker
 
